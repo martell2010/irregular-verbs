@@ -10,7 +10,7 @@ const routes = [
     name: 'Home',
     components: {
       default: MainLayout,
-      content: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+      content: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
     },
   },
   {
@@ -18,7 +18,7 @@ const routes = [
     name: 'Study',
     components: {
       default: MainLayout,
-      content: () => import(/* webpackChunkName: "study" */ '../views/Study.vue'),
+      content: () => import(/* webpackChunkName: "study" */ '@/views/Study.vue'),
     },
   },
   {
@@ -26,13 +26,13 @@ const routes = [
     name: 'Results',
     components: {
       default: MainLayout,
-      content: () => import(/* webpackChunkName: "results" */ '../views/Results.vue'),
+      content: () => import(/* webpackChunkName: "results" */ '@/views/Results.vue'),
     },
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes,
 });
 
