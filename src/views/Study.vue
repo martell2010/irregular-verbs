@@ -95,6 +95,7 @@ export default {
 
   mounted() {
     this.getRandomUniqVerb();
+    console.log(process.env.VUE_APP_PUBLIC_PATH);
   },
 
   methods: {
@@ -109,7 +110,7 @@ export default {
       this.isSuccess = true;
     },
     playSuccess() {
-      const audio = new Audio('/correct-answer-sound.mp3');
+      const audio = new Audio(`${process.env.VUE_APP_PUBLIC_PATH}correct-answer-sound.mp3`);
       audio.oncanplaythrough = () => {
         audio.play();
       };
