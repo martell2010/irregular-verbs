@@ -23,6 +23,11 @@ export default {
       type: Number,
       default: 0.65,
     },
+    volume: {
+      type: Number,
+      default: 0.8,
+    },
+
   },
 
   methods: {
@@ -31,6 +36,7 @@ export default {
       msg.text = text;
       msg.lang = this.lang;
       msg.rate = this.rate;
+      msg.volume = this.volume;
       window.speechSynthesis.speak(msg);
     },
   },

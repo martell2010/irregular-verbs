@@ -73,6 +73,8 @@ export default {
       isHintVisible: false,
       results: [],
       form: {},
+      successVolume: 0.4,
+      successAudio: null,
       rules: {
         check: (verb) => (value) => (
           value?.trim().toLowerCase() === verb?.trim().toLowerCase()
@@ -95,6 +97,7 @@ export default {
 
   mounted() {
     this.getRandomUniqVerb();
+    this.setSuccessSound();
   },
 
   methods: {
@@ -108,18 +111,14 @@ export default {
       this.playSuccess();
       this.isSuccess = true;
     },
-    playSuccess() {
-      const audio = new Audio(`${process.env.VUE_APP_PUBLIC_PATH}correct-answer-sound.mp3`);
-      audio.oncanplaythrough = () => {
-        audio.play();
-      };
-    },
+
     setResult() {
       this.results.push({
         ...this.currentVerb,
         withHints: this.isHintVisible,
       });
     },
+
     getRandomUniqVerb() {
       if (!this.verbs.length) {
         this.verbs = verbs;
@@ -137,6 +136,17 @@ export default {
 
     showHints() {
       this.isHintVisible = true;
+    },
+
+    setSuccessSound() {
+      this.successAudio = new Audio(`${process.env.VUE_APP_PUBLIC_PATH}correct-answer-sound.mp3`);
+      this.successAudio.oncanplaythrough = () => {
+        this.successAudio.volume = this.successVolume;
+      };
+    },
+
+    playSuccess() {
+      this.successAudio.play();
     },
   },
 };
