@@ -27,4 +27,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Deploy to github pages
-        run: npm run deploy
+        run: |
+          npm ci
+          npm run deploy
